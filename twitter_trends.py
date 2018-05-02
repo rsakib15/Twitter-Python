@@ -1,5 +1,6 @@
 import yweather
 import operator
+import csv
 
 def get_trends(api):
     trend_dict = {}
@@ -18,4 +19,16 @@ def get_trends(api):
     return rev_sorted_trend
 
 
+def put_trend_csv(trend):
+    trendlistexport = [["Trending Topic", "Tweet Volume"]]  # Makes trendlist to write into csv
+
+    for item in trend:
+        trendelement = []
+        trendelement.append(item[0])
+        trendelement.append(item[1])
+        print(trendelement)
+        trendlistexport.append(trendelement)
+        with open('trendtweets.csv', 'w') as trendfile:  # puts trend list items in CSV
+            writeto = csv.writer(trendfile, delimiter=',')
+            writeto.writerows(trendlistexport)
 
