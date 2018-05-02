@@ -29,6 +29,7 @@ def get_trends(api):
         "THAILAND" : 23424960,
         "USA" : 23424977
     }
+
     for key, value in woeid.iteritems():
         print value
         results = api.trends_place(value)
@@ -37,7 +38,7 @@ def get_trends(api):
                 try:
                     if trend["tweet_volume"] > 0:
                         trend['name'].decode('ISO-8859-1')
-                        trend_dict[trend['name']] = trend['tweet_volume']
+                        trend_dict[trend['name']] = trend['tweet_volume']  # keep the value in key value pair
                 except:
                     continue
 
